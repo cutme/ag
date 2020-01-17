@@ -1,0 +1,52 @@
+// Fonts
+
+$helvetica:         'Helvetica', sans-serif;
+$icomoon:           'icomoon';
+$mont:		        'Montserrat', sans-serif;
+$open:              'Open Sans', sans-serif;
+$text:		        $helvetica;
+
+
+
+
+// Font weights
+
+$extralight:        200;
+$light:             300;
+$regular:           400;
+$medium:            500;
+$semibold:          600;
+$bold:              700;
+$extrabold:         800;
+
+
+$z-index: (
+    hamburger:      100,
+    header:         30,
+	top           : 40,
+	nav           : 50,
+	logo          : 60,
+	sidebar       : 60
+);
+
+// Paths
+
+$path_img:          '../img';
+$path_fonts:        '../fonts';
+
+
+
+// Default
+
+$base-font-size:	12;
+$base:				1366;
+
+
+
+// RWD
+
+$desktop:              1920;
+$tablet:               1023;
+$tablet_portrait:       768;
+$smartphone:			640;
+$smartphone_portrait:	500;

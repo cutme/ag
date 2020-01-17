@@ -1,0 +1,16 @@
+.o-header {
+    margin-bottom: 30px;
+    text-align: center;
+   
+    .o-lead {
+        &--2 {
+            margin-bottom: .3em;
+            text-transform: uppercase;
+            font-weight: $bold;
+        }
+        
+        &--5 {
+            opacity: .8;
+        }
+    }
+}

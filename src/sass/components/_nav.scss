@@ -1,0 +1,119 @@
+.c-nav {
+    padding-top: 45px;
+
+    & > ul {
+        & > li {
+            
+            & > a {
+                text-transform: uppercase;
+            }
+            
+           
+            
+            
+            // Submenu
+            
+            & > ul {
+                display: none;
+                padding: 20px;
+                
+                & > li {
+                    @extend %anim;
+                    transform: translate3d(5px, 0, 0);
+                    opacity: 0;
+                                                          
+                    &:nth-child(2) {
+                        transition-delay: 50ms;
+                    }
+                                   
+                    &:nth-child(3) {
+                        transition-delay: 150ms;
+                    }
+                    
+                    &:nth-child(4) {
+                        transition-delay: 200ms;
+                    }
+                    
+                    &:nth-child(5) {
+                        transition-delay: 250ms;
+                    }
+                    
+                    &:nth-child(6) {
+                        transition-delay: 300ms;
+                    }
+                    
+                    &:nth-child(7) {
+                        transition-delay: 350ms;
+                    }
+                    
+                    &:nth-child(8) {
+                        transition-delay: 400ms;
+                    }
+                    
+                    &:nth-child(9) {
+                        transition-delay: 450ms;
+                    }
+                    
+                    &:nth-child(10) {
+                        transition-delay: 500ms;
+                    }
+                    
+                    a {
+                        letter-spacing: 1px;
+
+                        &:before {
+                            content: '_ ';
+                        }
+                    }
+                }
+            }
+            
+            
+             &.is-active {
+                
+                & > ul {
+                    display: block;
+                }
+            }
+            
+            &.is-visible {
+                & > ul {
+                    & > li {
+                        opacity: 1;
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+        
+        li {
+            letter-spacing: 1.5px;
+            padding: 3px 0;
+        }
+        
+        .current-menu-item {
+            & > a {
+                font: {
+                    style: italic;
+                    weight: $bold;
+                }
+            }
+            
+            & > ul {
+                display: block;
+                
+                & > li {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    
+    a {
+        &:hover {
+            .desktop & {
+                color: $c-primary;
+            }
+        }
+    }
+}

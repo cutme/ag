@@ -1,0 +1,69 @@
+.o-box {
+    figcaption {
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,1);
+        padding: 10px 20px 15px 20px;
+    }
+    
+    img {
+        margin-bottom: -1px;
+    }
+    
+    &__benefits {
+        [class^="icon-"] {
+            @extend %flex;
+            @extend %flex-xy;
+            width: 16px; height: 16px;
+            background-color: $c-black-01;
+            border-radius: 50%;
+            font-size: rem(10);
+            margin-right: 5px;
+            color: white;
+            display: inline-block;
+        }
+
+        span {
+            font-size: rem(10);
+        }
+    }
+    
+    &__meta {
+        @extend %flex;
+        @extend %flex-y;
+        margin-bottom: 15px;
+        
+        p {
+            font-size: rem(10);
+        }
+        
+        .o-tags {
+            max-width: 80%;
+            margin: 0 0 0 auto;
+
+            &__item {
+                margin-left: 2px;
+                padding: 1px 5px;
+                font-size: rem(9);
+            }
+        }
+    }
+    
+    .o-lead {
+        &--2 {
+            margin-bottom: .2em;
+            text-transform: uppercase;
+            letter-spacing: normal;
+            font-size: rem(25);
+        }
+        
+        &--6 {
+            margin-bottom: .2em;
+        }
+    }
+    
+    .glide {
+        &__slide {
+            width: 352px;
+        }
+    }
+}
+

@@ -1,0 +1,18 @@
+.c-social {
+    ul {
+        @extend %flex;
+        
+        li {
+            margin: 0 4px;
+        }
+    }
+    
+    a {
+        display: inline-block;
+        font-size: rem(20);
+        
+        &:hover {
+            transform: translate3d(0, -5px, 0);
+        }
+    }
+}

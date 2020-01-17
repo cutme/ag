@@ -1,0 +1,13 @@
+.c-sidebar {
+    @include z-index(sidebar);
+    position: fixed;
+    left: 0; top: 0;
+    width: 240px; height: 100%;
+    padding: 0 20px;
+    
+    &__logo {
+        @extend %flex;
+        @extend %flex-y;
+        height: 110px;
+    }
+}

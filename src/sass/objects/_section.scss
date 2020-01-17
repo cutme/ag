@@ -1,0 +1,13 @@
+.o-section {
+    
+   &--padding {
+	   padding: {
+    	   top: 50px;
+    	   bottom: 50px;
+        }
+    }
+    
+    &--paddingbottom {
+        padding-bottom: 50px;
+    }
+}

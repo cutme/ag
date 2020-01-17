@@ -1,0 +1,51 @@
+@import 'settings/colors.scss';
+@import 'settings/global.scss';
+
+@import 'tools/clear';
+@import 'tools/functions';
+@import 'tools/mixins';
+@import 'tools/blazy';
+//@import 'tools/custom-select';
+@import 'tools/flickity';
+//@import 'tools/glightbox';
+
+@import 'generic/reset';
+@import 'generic/box-sizing';
+@import 'generic/screen-reader';
+
+@import 'elements/extends';
+@import 'elements/fonts';
+@import 'elements/form';
+@import 'elements/media';
+@import 'elements/page';
+@import 'elements/typography';
+
+@import 'objects/article';
+@import 'objects/box';
+@import 'objects/btn';
+@import 'objects/cols';
+@import 'objects/container';
+@import 'objects/hamburger';
+@import 'objects/header';
+@import 'objects/icons';
+@import 'objects/lead';
+@import 'objects/logo';
+@import 'objects/more';
+@import 'objects/section';
+@import 'objects/tags';
+@import 'objects/video';
+@import 'objects/wrap';
+
+@import 'components/favslider';
+@import 'components/footer';
+@import 'components/moreinfo';
+@import 'components/nav';
+@import 'components/news';
+@import 'components/sidebar';
+@import 'components/social';
+@import 'components/team';
+@import 'components/top';
+@import 'components/warranty';
+
+@import 'trumps/trumps';
+

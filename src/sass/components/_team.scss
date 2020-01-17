@@ -1,0 +1,47 @@
+.c-team {
+    text-align: center;
+    
+    &__item {
+        max-width: 260px;
+        margin-bottom: 50px;
+
+        img {
+            margin-bottom: 15px;
+        }
+    }
+    
+    &__primary {
+        .o-cols {            
+            &__item {
+                margin: {
+                    left: 50px;
+                    right: 50px;
+                }
+            }
+        }
+    }
+    
+    &__secondary {
+        .o-cols {
+            &__item {
+                margin: {
+                    left: 25px;
+                    right: 25px;
+                }
+            }
+        }
+    }
+    
+    .o-cols {
+        @extend %flex-x;
+        @extend %flex-wrap;
+        margin-bottom: 50px;
+    }
+    
+    .o-lead {
+        &--4 {
+            margin-bottom: 2em;
+            text-transform: uppercase;
+        }
+    }
+}

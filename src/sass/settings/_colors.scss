@@ -1,0 +1,13 @@
+$c-black-01:   black;
+$c-black-02:   #3D3D3D;
+
+$c-brown-01:   #A88A40;
+
+$c-gray-01:    #646464;
+
+
+$c-primary: $c-brown-01;
+
+:root {
+  --primary-color: #{$c-brown-01};
+}

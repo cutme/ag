@@ -1,0 +1,52 @@
+.c-moreinfo {
+    
+    &__item {
+        @extend %flex;
+        @extend %flex-xy;
+        @extend %flex-wrap;
+        @extend %flex-column;
+        width: 210px;
+        margin-right: 20px;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,1);
+        
+        [class^="icon-"] {
+            font-size: rem(24);
+            color: $c-primary;
+        }
+        
+        h5 {
+            @extend %lead--5;
+            margin-bottom: 20px;
+        }
+    }
+    
+    .o-article {
+        
+        h3 {
+            margin-bottom: .6em;
+        }
+        
+        h6 {
+            margin-bottom: 2em;
+        }
+    }
+
+    .o-cols {
+        &__item {
+            &:first-of-type {
+                width: 420px;
+            }
+            
+            &:last-of-type {
+                @extend %flex;
+            }
+        }
+    }
+    
+    .o-section {
+        padding: {
+            top: 20px;
+            bottom: 50px;
+        }
+    }
+}

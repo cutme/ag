@@ -1,0 +1,44 @@
+.o-btn {
+    @extend %anim;
+    display: inline-flex;
+    @extend %flex-xy;
+    @extend %rel;
+    background-color: $c-black-01;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-family: $text;
+    color: white;
+    cursor: pointer;
+
+    &--major {
+        height: 44px;
+        padding: 0 30px;
+        font-size: rem(14);
+    }
+    
+    &--minor {
+        height: 25px;
+        padding: 0 15px;
+        font-size: rem(10);
+    }
+    
+    &--big {
+        font-size: rem(16);
+    }
+    
+    span {
+        width: 100%;
+	}
+}
+
+a.o-btn,
+button.o-btn {
+    
+    .desktop & {
+    
+        &:hover {
+	        background-color: $c-primary;
+        	//background-color: lighten($c-black-01, 15%);
+        }
+    }
+}

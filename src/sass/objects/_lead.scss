@@ -1,0 +1,22 @@
+.o-lead {
+    
+    &--2 {
+        @extend %lead--2;
+    }
+    
+    &--3 {
+        @extend %lead--3;
+    }
+    
+    &--4 {
+        @extend %lead--4;
+    }
+    
+    &--5 {
+        @extend %lead--5;
+    }
+    
+    &--6 {
+        @extend %lead--6;
+    }
+}

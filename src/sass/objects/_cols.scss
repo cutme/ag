@@ -1,0 +1,13 @@
+.o-cols {
+	width: 100%;
+    
+    @media ( min-width: $tablet + 1px ) {
+    	display: flex;
+    }
+
+    &__item {
+        @extend %rel;
+    }
+    
+}
+

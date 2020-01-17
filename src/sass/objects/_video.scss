@@ -1,0 +1,22 @@
+.o-video {
+	margin-bottom: 40px;
+    //max-width: 900px;
+
+
+        @extend %rel;
+        max-width: 100%;
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        padding-top: 0;
+        height: auto;
+        //box-shadow: rgba(black, .25) 0 0 84px;
+        
+        iframe {
+            @extend %abs;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+}

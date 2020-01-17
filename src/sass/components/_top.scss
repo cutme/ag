@@ -1,0 +1,30 @@
+.c-top {
+    @include z-index(top);
+	@extend %flex;
+	@extend %flex-y;
+    justify-content: flex-end;
+	height: 110px;
+	margin-left: 240px;
+	 
+	a {
+        font-size: rem(20);
+
+    }
+	 
+    &__account {
+        padding: 0 60px;
+        
+        a {
+            @extend %flex;
+            align-items: inherit;
+        }
+        
+    	i {
+        	margin-right: 10px;
+    	}
+    	 
+    	span {
+            font-size: rem(14);
+    	}
+    }
+}
