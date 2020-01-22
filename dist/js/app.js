@@ -576,6 +576,7 @@ var REQUIRED_VERSION_PARTS = 3;
 var userAgentRules = [
     ['aol', /AOLShield\/([0-9\._]+)/],
     ['edge', /Edge\/([0-9\._]+)/],
+    ['edge-ios', /EdgiOS\/([0-9\._]+)/],
     ['yandexbrowser', /YaBrowser\/([0-9\._]+)/],
     ['vivaldi', /Vivaldi\/([0-9\.]+)/],
     ['kakaotalk', /KAKAOTALK\s([0-9\.]+)/],
