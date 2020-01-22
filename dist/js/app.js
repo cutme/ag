@@ -6024,6 +6024,57 @@ var EventDispatcher = nonGlobals.events.EventDispatcher;
 
 /***/ }),
 
+/***/ "./node_modules/load-google-maps-api/index.js":
+/***/ (function(module, exports) {
+
+const API_URL = 'https://maps.googleapis.com/maps/api/js'
+const CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
+
+const optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']
+
+let promise = null
+
+module.exports = function (options = {}) {
+  promise =
+    promise ||
+    new Promise(function (resolve, reject) {
+      // Reject the promise after a timeout
+      const timeoutId = setTimeout(function () {
+        window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op
+        reject(new Error('Could not load the Google Maps API'))
+      }, options.timeout || 10000)
+
+      // Hook up the on load callback
+      window[CALLBACK_NAME] = function () {
+        if (timeoutId !== null) {
+          clearTimeout(timeoutId)
+        }
+        resolve(window.google.maps)
+        delete window[CALLBACK_NAME]
+      }
+
+      // Prepare the `script` tag to be inserted into the page
+      const scriptElement = document.createElement('script')
+      const params = [`callback=${CALLBACK_NAME}`]
+      optionsKeys.forEach(function (key) {
+        if (options[key]) {
+          params.push(`${key}=${options[key]}`)
+        }
+      })
+      if (options.libraries && options.libraries.length) {
+        params.push(`libraries=${options.libraries.join(',')}`)
+      }
+      scriptElement.src = `${options.apiUrl || API_URL}?${params.join('&')}`
+
+      // Insert the `script` tag
+      document.body.appendChild(scriptElement)
+    })
+  return promise
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /***/ (function(module, exports) {
 
@@ -6860,9 +6911,15 @@ __webpack_require__("./src/js/helpers.js");
 
 __webpack_require__("./src/js/carousels.js");
 
+__webpack_require__("./src/js/contact.js");
+
+__webpack_require__("./src/js/countup.js");
+
 __webpack_require__("./src/js/inview.js");
 
 __webpack_require__("./src/js/ismobile.js");
+
+__webpack_require__("./src/js/map.js");
 
 __webpack_require__("./src/js/nav.js"); //require('./js/fixel.js');
 //require('./js/scrollpos.js');
@@ -6889,12 +6946,113 @@ document.addEventListener('DOMContentLoaded', function () {
     }, "groupCells", 3));
   };
 
+  window.instaCarousel = function () {
+    var insta = document.getElementById('insta');
+    var instaflkty = new Flickity(insta, _defineProperty({
+      cellAlign: 'left',
+      contain: true,
+      groupCells: true
+    }, "groupCells", 3));
+  };
+
   window.newsCarousel = function () {
     var news = document.getElementById('news');
     var newsflkty = new Flickity(news, {
       cellAlign: 'left'
     });
   };
+}, false);
+
+/***/ }),
+
+/***/ "./src/js/contact.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var Flickity = __webpack_require__("./node_modules/flickity/js/index.js");
+
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementsByClassName('js-contact')[0],
+      btn = document.getElementsByClassName('js-mapbtn'),
+      address = document.getElementsByClassName('js-addressitem');
+
+  var action = function action(e) {
+    var btn_parent = e.currentTarget.parentNode,
+        index = cutme.Helpers.thisIndex(btn_parent); // Hide all
+
+    for (var i = 0; i < btn.length; i++) {
+      btn[i].parentNode.classList.remove('is-visible');
+      btn[i].parentNode.classList.remove('is-active');
+      address[i].classList.remove('is-active');
+    } // Show map
+
+
+    btn_parent.classList.add('is-visible');
+    setTimeout(function () {
+      btn_parent.classList.add('is-active');
+    }, 1); // Show address
+
+    address[index].classList.add('is-active');
+  };
+
+  for (var i = 0; i < btn.length; i++) {
+    btn[i].addEventListener('click', action);
+  }
+}, false);
+
+/***/ }),
+
+/***/ "./src/js/countup.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/countup.js/dist/countUp.min.js
+var __assign=undefined&&undefined.__assign||function(){return(__assign=Object.assign||function(t){for(var i,a=1,s=arguments.length;a<s;a++)for(var n in i=arguments[a])Object.prototype.hasOwnProperty.call(i,n)&&(t[n]=i[n]);return t}).apply(this,arguments)},CountUp=function(){function t(t,i,a){var s=this;this.target=t,this.endVal=i,this.options=a,this.version="2.0.4",this.defaults={startVal:0,decimalPlaces:0,duration:2,useEasing:!0,useGrouping:!0,smartEasingThreshold:999,smartEasingAmount:333,separator:",",decimal:".",prefix:"",suffix:""},this.finalEndVal=null,this.useEasing=!0,this.countDown=!1,this.error="",this.startVal=0,this.paused=!0,this.count=function(t){s.startTime||(s.startTime=t);var i=t-s.startTime;s.remaining=s.duration-i,s.useEasing?s.countDown?s.frameVal=s.startVal-s.easingFn(i,0,s.startVal-s.endVal,s.duration):s.frameVal=s.easingFn(i,s.startVal,s.endVal-s.startVal,s.duration):s.countDown?s.frameVal=s.startVal-(s.startVal-s.endVal)*(i/s.duration):s.frameVal=s.startVal+(s.endVal-s.startVal)*(i/s.duration),s.countDown?s.frameVal=s.frameVal<s.endVal?s.endVal:s.frameVal:s.frameVal=s.frameVal>s.endVal?s.endVal:s.frameVal,s.frameVal=Math.round(s.frameVal*s.decimalMult)/s.decimalMult,s.printValue(s.frameVal),i<s.duration?s.rAF=requestAnimationFrame(s.count):null!==s.finalEndVal?s.update(s.finalEndVal):s.callback&&s.callback()},this.formatNumber=function(t){var i,a,n,e,r,o=t<0?"-":"";if(i=Math.abs(t).toFixed(s.options.decimalPlaces),n=(a=(i+="").split("."))[0],e=a.length>1?s.options.decimal+a[1]:"",s.options.useGrouping){r="";for(var l=0,h=n.length;l<h;++l)0!==l&&l%3==0&&(r=s.options.separator+r),r=n[h-l-1]+r;n=r}return s.options.numerals&&s.options.numerals.length&&(n=n.replace(/[0-9]/g,function(t){return s.options.numerals[+t]}),e=e.replace(/[0-9]/g,function(t){return s.options.numerals[+t]})),o+s.options.prefix+n+e+s.options.suffix},this.easeOutExpo=function(t,i,a,s){return a*(1-Math.pow(2,-10*t/s))*1024/1023+i},this.options=__assign({},this.defaults,a),this.formattingFn=this.options.formattingFn?this.options.formattingFn:this.formatNumber,this.easingFn=this.options.easingFn?this.options.easingFn:this.easeOutExpo,this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.endVal=this.validateValue(i),this.options.decimalPlaces=Math.max(this.options.decimalPlaces),this.decimalMult=Math.pow(10,this.options.decimalPlaces),this.resetDuration(),this.options.separator=String(this.options.separator),this.useEasing=this.options.useEasing,""===this.options.separator&&(this.options.useGrouping=!1),this.el="string"==typeof t?document.getElementById(t):t,this.el?this.printValue(this.startVal):this.error="[CountUp] target is null or undefined"}return t.prototype.determineDirectionAndSmartEasing=function(){var t=this.finalEndVal?this.finalEndVal:this.endVal;this.countDown=this.startVal>t;var i=t-this.startVal;if(Math.abs(i)>this.options.smartEasingThreshold){this.finalEndVal=t;var a=this.countDown?1:-1;this.endVal=t+a*this.options.smartEasingAmount,this.duration=this.duration/2}else this.endVal=t,this.finalEndVal=null;this.finalEndVal?this.useEasing=!1:this.useEasing=this.options.useEasing},t.prototype.start=function(t){this.error||(this.callback=t,this.duration>0?(this.determineDirectionAndSmartEasing(),this.paused=!1,this.rAF=requestAnimationFrame(this.count)):this.printValue(this.endVal))},t.prototype.pauseResume=function(){this.paused?(this.startTime=null,this.duration=this.remaining,this.startVal=this.frameVal,this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count)):cancelAnimationFrame(this.rAF),this.paused=!this.paused},t.prototype.reset=function(){cancelAnimationFrame(this.rAF),this.paused=!0,this.resetDuration(),this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.printValue(this.startVal)},t.prototype.update=function(t){cancelAnimationFrame(this.rAF),this.startTime=null,this.endVal=this.validateValue(t),this.endVal!==this.frameVal&&(this.startVal=this.frameVal,this.finalEndVal||this.resetDuration(),this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count))},t.prototype.printValue=function(t){var i=this.formattingFn(t);"INPUT"===this.el.tagName?this.el.value=i:"text"===this.el.tagName||"tspan"===this.el.tagName?this.el.textContent=i:this.el.innerHTML=i},t.prototype.ensureNumber=function(t){return"number"==typeof t&&!isNaN(t)},t.prototype.validateValue=function(t){var i=Number(t);return this.ensureNumber(i)?i:(this.error="[CountUp] invalid start or end value: "+t,null)},t.prototype.resetDuration=function(){this.startTime=null,this.duration=1e3*Number(this.options.duration),this.remaining=this.duration},t}();
+// EXTERNAL MODULE: ./node_modules/inview/inview.js
+var inview_inview = __webpack_require__("./node_modules/inview/inview.js");
+var inview_default = /*#__PURE__*/__webpack_require__.n(inview_inview);
+
+// CONCATENATED MODULE: ./src/js/countup.js
+/*
+ * Animations that display numerical data (https://inorganik.github.io/countUp.js/)
+ * with InView detection (https://github.com/miguelmota/inview)
+ *
+ * Usage:
+ * <span class="js-count" data-count="500">&nbsp;</span>
+ */
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var count = document.getElementsByClassName('js-count');
+
+  var init = function init() {
+    var options = {
+      duration: 4
+    };
+
+    var _loop = function _loop(i) {
+      var inview = inview_default()(count[i], function (isInView) {
+        if (isInView) {
+          var demo = new CountUp(count[i], count[i].getAttribute('data-count'), options);
+
+          if (!demo.error) {
+            demo.start();
+          } else {
+            console.error(demo.error);
+          }
+
+          this.destroy();
+        }
+      });
+    };
+
+    for (var i = 0; i < count.length; i++) {
+      _loop(i);
+    }
+  };
+
+  count.length > 0 ? init() : false;
 }, false);
 
 /***/ }),
@@ -7100,7 +7258,8 @@ var scrollPlugin = ScrollToPlugin; //import customSelect from 'custom-select';
   var Helpers = function Helpers() {
     return {
       isInView: isInView,
-      scrollTo: scrollTo
+      scrollTo: scrollTo,
+      thisIndex: thisIndex
     };
   };
 
@@ -7120,6 +7279,19 @@ var scrollPlugin = ScrollToPlugin; //import customSelect from 'custom-select';
       },
       ease: Power1.easeOut
     });
+  };
+
+  var thisIndex = function thisIndex(elm) {
+    var nodes = elm.parentNode.childNodes,
+        node,
+        i = 0,
+        count = 0;
+
+    while ((node = nodes.item(i++)) && node != elm) {
+      if (node.nodeType == 1) count++;
+    }
+
+    return count;
   };
 
   cutme.Helpers = new Helpers(); // Select
@@ -7185,9 +7357,12 @@ document.addEventListener('DOMContentLoaded', function () {
       success: function success(el) {//let item = el.parentNode.parentNode.parentNode;
         //item.classList.add('is-visible');
       }
-    });
+    }); // Carousels
+
     var fav = document.getElementById('fav');
     fav ? window.favCarousel() : false;
+    var insta = document.getElementById('insta');
+    insta ? window.instaCarousel() : false;
     var news = document.getElementById('news');
     news ? window.newsCarousel() : false;
   };
@@ -7239,6 +7414,52 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     document.documentElement.className += ' desktop';
   }
+})();
+
+/***/ }),
+
+/***/ "./src/js/map.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var loadGoogleMapsApi = __webpack_require__("./node_modules/load-google-maps-api/index.js");
+
+(function () {
+  var obj = document.getElementsByClassName('js-map');
+  var mapenable = false,
+      int;
+
+  var initMap = function initMap(el) {
+    loadGoogleMapsApi({
+      key: 'AIzaSyDzv4gozpcF9CjrI6OWHpLavj2hTLfH4IY'
+    }).then(function (googleMaps) {
+      console.log(el);
+      var lat = Number(el.getAttribute('data-lat')),
+          lng = Number(el.getAttribute('data-lng')),
+          myLatLng = new google.maps.LatLng(lat, lng);
+      var map = new googleMaps.Map(el, {
+        center: myLatLng,
+        disableDefaultUI: true,
+        zoom: 13
+      });
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        draggable: false,
+        zIndex: 20,
+        animation: google.maps.Animation.DROP
+      });
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
+  var init = function init() {
+    for (var i = 0; i < obj.length; i++) {
+      initMap(obj[i]);
+    }
+  };
+
+  obj.length > 0 ? init() : false;
 })();
 
 /***/ }),

@@ -8,7 +8,8 @@ const scrollPlugin = ScrollToPlugin;
     const Helpers = function() {
         return {
         	isInView: isInView,
-        	scrollTo: scrollTo
+        	scrollTo: scrollTo,
+        	thisIndex: thisIndex
         };
     };  
     
@@ -29,6 +30,14 @@ const scrollPlugin = ScrollToPlugin;
 			ease: Power1.easeOut
 		});
 	};
+	
+	const thisIndex = function(elm) {
+        let nodes = elm.parentNode.childNodes, node, i = 0, count = 0;
+        while( (node = nodes.item(i++)) && node != elm ) {
+            if( node.nodeType == 1 ) count++;            
+        }
+        return count;
+    };
 
     cutme.Helpers = new Helpers();
     

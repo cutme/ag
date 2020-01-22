@@ -32,6 +32,16 @@
         @extend %lead--4;
     }
     
+    h5 {
+        margin-bottom: 1.5em;
+        margin-top: 2.5em;
+        font: {
+            size: rem(16);
+            weight: $bold;
+        }
+        color: $c-black-02;
+    }
+    
     h6 {
         @extend %lead--6;
         margin-bottom: 1em;
@@ -73,6 +83,35 @@
         }
     }
     
+    &--photoleft,
+    &--photoright,
+    &--textbottom {
+        figure {
+            @extend %flex;
+            @extend %flex-end;
+            
+            figcaption {
+                padding-bottom: 30px;
+            }
+        }
+    }
+    
+    &--photoleft {
+        img {
+            margin-right: 80px;
+        }
+    }
+    
+    &--photoright {
+        figure {
+            flex-direction: row-reverse;
+        }
+        
+        img {
+            margin-left: 80px;
+        }
+    }
+
     .o-cols {
         @extend %flex-wrap;
         

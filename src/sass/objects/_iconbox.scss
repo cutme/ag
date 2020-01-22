@@ -1,0 +1,37 @@
+.o-iconbox {
+    @extend %flex;
+
+    &__item {
+        @extend %flex;
+        @extend %flex-xy;
+        @extend %flex-wrap;
+        @extend %flex-column;
+        text-align: center;
+        min-height: 130px;
+        margin-right: 20px;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,1);
+        
+        [class^="icon-"] {
+            font-size: rem(24);
+            color: $c-primary;
+        }
+        
+        .icon-trophy {
+            font-size: rem(30);
+        }
+        
+        h5 {
+            @extend %lead--5;
+            margin-bottom: 20px;
+        }
+        
+        h6 {
+            text-transform: uppercase;
+            font-size: rem(9);
+        }
+        
+        .num {
+            font-size: rem(25);
+        }
+    }
+}

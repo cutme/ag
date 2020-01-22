@@ -1,0 +1,91 @@
+@keyframes pulse {
+    0%   {
+        background: white;
+    }
+    50% {
+        background: #efefef;
+    }
+    
+    100% {
+        background: white;
+    }
+}
+
+.c-map {
+    
+    &__area {
+        //display: none;
+        @extend %anim;
+        height: 470px;
+        border: 1px solid black;
+        border-top: none;
+        
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform-origin: 50% 0;
+        transform: translateY(-21px);
+        //transition: all 0.5s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+        display: none;
+
+        .is-visible & {
+            display: block;
+        }
+        
+        .is-active & {
+            //height: auto;
+            //overflow: visible;
+            
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+            
+//            display: block;
+        }
+        
+        filter: grayscale(1);
+
+        &.is-loading {
+            animation: pulse 1s infinite;
+        }
+    }
+
+    &__btn {
+        @extend %flex;
+        @extend %flex-y;
+        @extend %rel;
+        background-color: white;
+        height: 42px;
+        border: 1px solid black;
+        padding: 0 35px; 
+        text-transform: uppercase;
+        font: {
+            size: rem(18);
+            weight: $bold;
+        }
+        cursor: pointer;
+        
+        &:after {
+            @extend %abs-pseudo;
+            @extend %abs-y;
+            @extend %anim;
+            right: 30px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 7px 12px 7px;
+            border-color: transparent transparent black transparent;
+            transform: scaleY(-1) translateY(50%);
+                        
+            .is-active & {
+                transform: scaleY(1) translateY(-50%);
+            }
+        }
+    }
+    
+    &__item {
+        &:not(:last-of-type) {
+            margin-bottom: 15px;
+        }
+    }
+}

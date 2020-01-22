@@ -15,10 +15,18 @@ console.log(process.env.NODE_ENV);
 
 const templateFileMapper = [
 
+    { template: "./src/actualites.ejs", file: "actualites.html" },
+    { template: "./src/contact.ejs", file: "contact.html" },
     { template: "./src/index.ejs", file: "index.html" },
+    { template: "./src/canditatures.ejs", file: "canditatures.html" },
     { template: "./src/edito.ejs", file: "edito.html" },
     { template: "./src/equipe.ejs", file: "equipe.html" },
+    { template: "./src/groupe.ejs", file: "groupe.html" },
+    { template: "./src/inscriptions.ejs", file: "inscriptions.html" },
     { template: "./src/pack.ejs", file: "pack.html" },
+    { template: "./src/presse.ejs", file: "presse.html" },
+    { template: "./src/service.ejs", file: "service.html" },
+    { template: "./src/trouver.ejs", file: "trouver.html" },
 
 ]
 

@@ -1,7 +1,6 @@
 .c-news {
     &__item {
         @extend %flex;
-        
         width: 100%;
         
         .text {

@@ -1,0 +1,8 @@
+.o-btnlinks {
+    @extend %flex;
+    @extend %flex-wrap;    
+    
+    .o-btn {
+        margin: 0 10px 10px 0;
+    }
+}

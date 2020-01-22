@@ -5,8 +5,11 @@ import css from './sass/style.scss';
 require('./js/init.js');
 require('./js/helpers.js');
 require('./js/carousels.js');
+require('./js/contact.js');
+require('./js/countup.js');
 require('./js/inview.js');
 require('./js/ismobile.js');
+require('./js/map.js');
 require('./js/nav.js');
 
 //require('./js/fixel.js');

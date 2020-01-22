@@ -1,6 +1,10 @@
 .o-header {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: center;
+    
+    &--extramargin {
+        margin-bottom: 60px;
+    }
    
     .o-lead {
         &--2 {

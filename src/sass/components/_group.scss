@@ -1,0 +1,10 @@
+.c-group {
+    .o-section {
+        .o-article {
+            &:not(:last-of-type) {
+                margin-bottom: 50px;
+            }
+        }
+    }
+    
+}

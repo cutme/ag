@@ -33,8 +33,14 @@ document.addEventListener('DOMContentLoaded',function() {
             }
         });
         
+        
+        // Carousels
+        
         const fav = document.getElementById('fav');
         fav ? window.favCarousel() : false;
+        
+        const insta = document.getElementById('insta');
+        insta ? window.instaCarousel() : false;
         
         const news = document.getElementById('news');
         news ? window.newsCarousel() : false;

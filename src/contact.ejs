@@ -1,0 +1,113 @@
+<% include ./src/includes/head %>
+<body>
+
+    <% include ./src/includes/sidebar-contact %>
+    <% include ./src/includes/top %>
+    
+    <main class="o-container">
+        
+        <div class="o-section o-section--padding">
+
+            <header class="o-header o-header--extramargin">
+                <h1 class="o-lead o-lead--2">NOTRE CONTACT PRESSE:</h1>
+            </header>
+                
+            <div class="c-contact js-contact">
+                <div class="o-cols">
+                    <div class="o-cols__item">
+                        
+                        <ul class="c-map">
+                            <li class="c-map__item js-mapitem">                                
+                                <div class="c-map__btn js-mapbtn">
+                                    <span>Paris</span>
+                                </div>
+
+                                <div class="c-map__area is-loading js-map" data-lat="48.8589507" data-lng="2.2770203"></div>
+                            </li>
+                            
+                            <li class="c-map__item js-mapitem is-active is-visible">                                
+                                <div class="c-map__btn js-mapbtn">
+                                    <span>Perpignan</span>
+                                </div>
+ 
+                                <div class="c-map__area is-loading js-map" data-lat="42.7018622" data-lng="2.9238552"></div>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    
+                    <div class="o-cols__item">
+                        
+                        <article>
+                            
+                            <ul class="js-address">
+                                <li class="js-addressitem">
+                                    <h3>CONTACTER NOS BUREAUX A Paris</h3>
+        
+                                    <address>
+                                        <p>379 Chemin de Cabestany A Bompas,</p>
+                                        <p>66000 Perpignan</p>
+                                        
+                                        <p>&nbsp;</p>
+                                        <p>+33 (0) 4 68 63 67 20</p>
+                                        <p>info@angelys-group.com</p>
+                                    </address> 
+                                </li>
+                                
+                                <li class="js-addressitem is-active">
+                                    <h3>CONTACTER NOS BUREAUX A PERPIGNAN</h3>
+        
+                                    <address>
+                                        <p>379 Chemin de Cabestany A Bompas,</p>
+                                        <p>66000 Perpignan</p>
+                                        
+                                        <p>&nbsp;</p>
+                                        <p>+33 (0) 4 68 63 67 20</p>
+                                        <p>info@angelys-group.com</p>
+                                    </address> 
+                                </li>
+                            </ul>
+                        
+                        
+                            <form action="#" class="c-contactform">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">nom / PRENOM</label>
+                                        <input type="text" class="form-field">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">objet</label>
+                                        <input type="text" class="form-field">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">message</label>
+                                        <textarea class="form-field">message</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row form-row--submit">
+                                    <div class="form-group">
+                                        <button type="submit" class="o-btn">ENVOYER VOTRE message</button>
+                                    </div>
+                                </div>                            
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    <% include ./src/includes/footer %>
+    
+</body>
+</html>
+
+

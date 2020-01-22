@@ -1,0 +1,14 @@
+.c-grid {
+    @extend %flex;
+    @extend %flex-wrap;
+    width: calc(100% + 24px);
+    margin: 0 -12px;
+    
+    &--extramargin {
+        margin-bottom: 80px;
+    }
+    
+    &__item {
+        margin: 0 12px 24px 12px;
+    }
+}

@@ -1,7 +1,6 @@
 .o-container {
     @extend %clear;
-    width: 1126px;
+    width: 1128px;
+    min-height: calc(100vh - 300px);
     margin-left: 240px;
-    
-
 }

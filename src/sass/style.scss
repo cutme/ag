@@ -23,11 +23,13 @@
 @import 'objects/article';
 @import 'objects/box';
 @import 'objects/btn';
+@import 'objects/btnlinks';
 @import 'objects/cols';
 @import 'objects/container';
 @import 'objects/hamburger';
 @import 'objects/header';
 @import 'objects/icons';
+@import 'objects/iconbox';
 @import 'objects/lead';
 @import 'objects/logo';
 @import 'objects/more';
@@ -36,15 +38,29 @@
 @import 'objects/video';
 @import 'objects/wrap';
 
+@import 'components/contact';
+@import 'components/contactform';
 @import 'components/favslider';
 @import 'components/footer';
+@import 'components/grid';
+@import 'components/group';
+@import 'components/inscription';
+@import 'components/inscriptionform';
+@import 'components/instaslider';
+@import 'components/map';
 @import 'components/moreinfo';
 @import 'components/nav';
 @import 'components/news';
+@import 'components/presse';
+@import 'components/recruitment';
+@import 'components/recruitform';
+@import 'components/service';
 @import 'components/sidebar';
 @import 'components/social';
+@import 'components/stats';
 @import 'components/team';
 @import 'components/top';
+@import 'components/trouver';
 @import 'components/warranty';
 
 @import 'trumps/trumps';

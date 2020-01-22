@@ -1,0 +1,20 @@
+.c-trouver {
+    
+    .o-article {
+        max-width: 760px;
+        margin: 0 auto 50px auto;
+        color: $c-black-02;
+        
+        p {
+            line-height: 1.4em;
+        }
+    }
+    
+    .o-btnlinks {
+        @extend %flex-x;
+
+        .o-btn {
+            text-transform: none;
+        }
+    }
+}
